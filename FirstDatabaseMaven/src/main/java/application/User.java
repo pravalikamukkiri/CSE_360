@@ -1,11 +1,10 @@
-package edu.asu.DatabasePart1.DatabasePart1;
+package application;
 
 /**
  * The User class represents a user entity in the system.
  * It contains the user's details such as email, password, and role.
  */
 public class User {
-    private int id;
     private String email;
     private String password;
     private String role;

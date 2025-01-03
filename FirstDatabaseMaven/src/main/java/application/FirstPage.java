@@ -1,12 +1,9 @@
-package edu.asu.Application;
-import java.sql.SQLException;
+package application;
 
-import edu.asu.DatabasePart1.DatabasePart1.*;
+import databasePart1.*;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 

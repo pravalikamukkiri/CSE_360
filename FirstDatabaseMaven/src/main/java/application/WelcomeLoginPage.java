@@ -1,13 +1,11 @@
-package edu.asu.Application;
+package application;
 
-import edu.asu.DatabasePart1.DatabasePart1.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.application.Platform;
-
-import java.sql.SQLException;
+import databasePart1.*;
 
 /**
  * The WelcomeLoginPage class displays a welcome screen for authenticated users.

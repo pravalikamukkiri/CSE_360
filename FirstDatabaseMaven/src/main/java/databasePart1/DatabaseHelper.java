@@ -1,12 +1,12 @@
-package edu.asu.DatabasePart1.DatabasePart1;
-import edu.asu.DatabasePart1.DatabasePart1.User;
+package databasePart1;
 import java.sql.*;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
+
+import application.User;
 
 
 /**
