@@ -9,7 +9,7 @@ import javafx.stage.Stage;
  * This page displays a simple welcome message for the user.
  */
 
-public class UserPage {
+public class UserHomePage {
 
     public void show(Stage primaryStage) {
     	VBox layout = new VBox();

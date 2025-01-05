@@ -13,11 +13,11 @@ import databasePart1.*;
  * The SetupAdmin class handles the setup process for creating an administrator account.
  * This is intended to be used by the first user to initialize the system with admin credentials.
  */
-public class SetupAdmin {
+public class AdminSetupPage {
 	
     private final DatabaseHelper databaseHelper;
 
-    public SetupAdmin(DatabaseHelper databaseHelper) {
+    public AdminSetupPage(DatabaseHelper databaseHelper) {
         this.databaseHelper = databaseHelper;
     }
 
@@ -37,7 +37,6 @@ public class SetupAdmin {
         	// Retrieve user input
             String email = emailField.getText();
             String password = passwordField.getText();
-            System.out.println("Setup clicked with Email: " + email + " and Password: " + password);
             try {
             	// Create a new User object with admin role and register in the database
             	User user=new User(email, password, "admin");

@@ -42,7 +42,6 @@ public class UserLoginPage {
         	// Retrieve user inputs
             String email = emailField.getText();
             String password = passwordField.getText();
-            System.out.println("Setup clicked with Email: " + email + " and Password: " + password);
             try {
             	User user=new User(email, password, "");
             	WelcomeLoginPage welcomeLoginPage = new WelcomeLoginPage(databaseHelper);
@@ -57,22 +56,18 @@ public class UserLoginPage {
             		}
             		else {
             			// Display an error if the login fails
-            			System.out.println("user account doesn't exists");
                         errorLabel.setText("Error logging in");
             		}
             	}
             	else {
             		// Display an error if the account does not exist
-                    System.out.println("user account doesn't exists");
                     errorLabel.setText("user account doesn't exists");
             	}
             	
             } catch (SQLException e) {
                 System.err.println("Database error: " + e.getMessage());
                 e.printStackTrace();
-            } finally {
-                //databaseHelper.closeConnection();
-            }
+            } 
         });
 
         VBox layout = new VBox(10);

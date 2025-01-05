@@ -11,7 +11,7 @@ import javafx.stage.Stage;
  * This page displays a simple welcome message for the admin.
  */
 
-public class AdminPage {
+public class AdminHomePage {
 	/**
      * Displays the admin page in the provided primary stage.
      * @param primaryStage The primary stage where the scene will be displayed.

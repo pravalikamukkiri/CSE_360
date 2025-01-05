@@ -33,17 +33,16 @@ public class WelcomeLoginPage {
 	    	System.out.println(role);
 	    	
 	    	if(role.equals("admin")) {
-	    		new AdminPage().show(primaryStage);
+	    		new AdminHomePage().show(primaryStage);
 	    	}
 	    	else if(role.equals("user")) {
-	    		new UserPage().show(primaryStage);
+	    		new UserHomePage().show(primaryStage);
 	    	}
 	    });
 	    
 	    // Button to quit the application
 	    Button quitButton = new Button("Quit");
 	    quitButton.setOnAction(a -> {
-	    	System.out.println("quit");
 	    	databaseHelper.closeConnection();
 	    	Platform.exit(); // Exit the JavaFX application
 	    });
@@ -52,7 +51,7 @@ public class WelcomeLoginPage {
 	    if ("admin".equals(user.getRole())) {
             Button inviteButton = new Button("Invite");
             inviteButton.setOnAction(a -> {
-                new InvitePage().show(databaseHelper, primaryStage);
+                new InvitationPage().show(databaseHelper, primaryStage);
             });
             layout.getChildren().add(inviteButton);
         }

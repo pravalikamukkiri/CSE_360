@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  * The invitation code is displayed upon clicking a button.
  */
 
-public class InvitePage {
+public class InvitationPage {
 
 	/**
      * Displays the Invite Page in the provided primary stage.

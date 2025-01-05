@@ -24,12 +24,11 @@ public class SetupLoginSelectionPage {
     	// Buttons to select Login / Setup options that redirect to respective pages
         Button setupButton = new Button("SetUp");
         Button loginButton = new Button("Login");
+        
         setupButton.setOnAction(a -> {
-            System.out.println("setup");
             new SetupAccountPage(databaseHelper).show(primaryStage);
         });
         loginButton.setOnAction(a -> {
-        	System.out.println("login");
         	new UserLoginPage(databaseHelper).show(primaryStage);
         });
 

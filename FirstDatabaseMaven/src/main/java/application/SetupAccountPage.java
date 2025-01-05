@@ -52,7 +52,6 @@ public class SetupAccountPage {
             String password = passwordField.getText();
             String code = inviteCodeField.getText();
             
-            System.out.println("Setup clicked with Email: " + email + " and Password: " + password);
             try {
             	// Check if the user already exists
             	if(!databaseHelper.doesUserExist(email)) {
@@ -72,14 +71,12 @@ public class SetupAccountPage {
             		}
             	}
             	else {
-            		errorLabel.setText("An account already exists with this email! Please login in");
+            		errorLabel.setText("This useremail is taken!!.. Please use another to setup an account");
             	}
             	
             } catch (SQLException e) {
                 System.err.println("Database error: " + e.getMessage());
                 e.printStackTrace();
-            } finally {
-                //databaseHelper.closeConnection();
             }
         });
 
