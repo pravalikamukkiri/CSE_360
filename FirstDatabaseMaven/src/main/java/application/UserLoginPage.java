@@ -22,10 +22,10 @@ public class UserLoginPage {
     }
 
     public void show(Stage primaryStage) {
-    	// Input field for the user's email, password
-        TextField emailField = new TextField();
-        emailField.setPromptText("Enter Email");
-        emailField.setMaxWidth(250);
+    	// Input field for the user's userName, password
+        TextField userNameField = new TextField();
+        userNameField.setPromptText("Enter userName");
+        userNameField.setMaxWidth(250);
 
         PasswordField passwordField = new PasswordField();
         passwordField.setPromptText("Enter Password");
@@ -40,14 +40,14 @@ public class UserLoginPage {
         
         loginButton.setOnAction(a -> {
         	// Retrieve user inputs
-            String email = emailField.getText();
+            String userName = userNameField.getText();
             String password = passwordField.getText();
             try {
-            	User user=new User(email, password, "");
+            	User user=new User(userName, password, "");
             	WelcomeLoginPage welcomeLoginPage = new WelcomeLoginPage(databaseHelper);
             	
-            	// Retrieve the user's role from the database using email
-            	String role = databaseHelper.getUserRole(email);
+            	// Retrieve the user's role from the database using userName
+            	String role = databaseHelper.getUserRole(userName);
             	
             	if(role!=null) {
             		user.setRole(role);
@@ -72,7 +72,7 @@ public class UserLoginPage {
 
         VBox layout = new VBox(10);
         layout.setStyle("-fx-padding: 20; -fx-alignment: center;");
-        layout.getChildren().addAll(emailField, passwordField, loginButton, errorLabel);
+        layout.getChildren().addAll(userNameField, passwordField, loginButton, errorLabel);
 
         primaryStage.setScene(new Scene(layout, 800, 400));
         primaryStage.setTitle("User Login");

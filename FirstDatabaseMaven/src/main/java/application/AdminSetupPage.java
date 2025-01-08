@@ -22,10 +22,10 @@ public class AdminSetupPage {
     }
 
     public void show(Stage primaryStage) {
-    	// Input fields for email and password
-        TextField emailField = new TextField();
-        emailField.setPromptText("Enter Admin Email");
-        emailField.setMaxWidth(250);
+    	// Input fields for userName and password
+        TextField userNameField = new TextField();
+        userNameField.setPromptText("Enter Admin userName");
+        userNameField.setMaxWidth(250);
 
         PasswordField passwordField = new PasswordField();
         passwordField.setPromptText("Enter Password");
@@ -35,11 +35,11 @@ public class AdminSetupPage {
         
         setupButton.setOnAction(a -> {
         	// Retrieve user input
-            String email = emailField.getText();
+            String userName = userNameField.getText();
             String password = passwordField.getText();
             try {
             	// Create a new User object with admin role and register in the database
-            	User user=new User(email, password, "admin");
+            	User user=new User(userName, password, "admin");
                 databaseHelper.register(user);
                 System.out.println("Administrator setup completed.");
                 
@@ -51,7 +51,7 @@ public class AdminSetupPage {
             }
         });
 
-        VBox layout = new VBox(10, emailField, passwordField, setupButton);
+        VBox layout = new VBox(10, userNameField, passwordField, setupButton);
         layout.setStyle("-fx-padding: 20; -fx-alignment: center;");
 
         primaryStage.setScene(new Scene(layout, 800, 400));

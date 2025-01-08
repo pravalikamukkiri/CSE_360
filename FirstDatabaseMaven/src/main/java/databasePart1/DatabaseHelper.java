@@ -33,6 +33,7 @@ public class DatabaseHelper {
 			System.out.println("Connecting to database...");
 			connection = DriverManager.getConnection(DB_URL, USER, PASS);
 			statement = connection.createStatement(); 
+			// You can use this command to clear the database and restart from fresh.
 			//statement.execute("DROP ALL OBJECTS");
 
 			createTables();  // Create the necessary tables if they don't exist
@@ -44,7 +45,7 @@ public class DatabaseHelper {
 	private void createTables() throws SQLException {
 		String userTable = "CREATE TABLE IF NOT EXISTS cse360users ("
 				+ "id INT AUTO_INCREMENT PRIMARY KEY, "
-				+ "email VARCHAR(255) UNIQUE, "
+				+ "userName VARCHAR(255) UNIQUE, "
 				+ "password VARCHAR(255), "
 				+ "role VARCHAR(20))";
 		statement.execute(userTable);
@@ -69,9 +70,9 @@ public class DatabaseHelper {
 
 	// Registers a new user in the database.
 	public void register(User user) throws SQLException {
-		String insertUser = "INSERT INTO cse360users (email, password, role) VALUES (?, ?, ?)";
+		String insertUser = "INSERT INTO cse360users (userName, password, role) VALUES (?, ?, ?)";
 		try (PreparedStatement pstmt = connection.prepareStatement(insertUser)) {
-			pstmt.setString(1, user.getEmail());
+			pstmt.setString(1, user.getUserName());
 			pstmt.setString(2, user.getPassword());
 			pstmt.setString(3, user.getRole());
 			pstmt.executeUpdate();
@@ -80,9 +81,9 @@ public class DatabaseHelper {
 
 	// Validates a user's login credentials.
 	public boolean login(User user) throws SQLException {
-		String query = "SELECT * FROM cse360users WHERE email = ? AND password = ? AND role = ?";
+		String query = "SELECT * FROM cse360users WHERE userName = ? AND password = ? AND role = ?";
 		try (PreparedStatement pstmt = connection.prepareStatement(query)) {
-			pstmt.setString(1, user.getEmail());
+			pstmt.setString(1, user.getUserName());
 			pstmt.setString(2, user.getPassword());
 			pstmt.setString(3, user.getRole());
 			try (ResultSet rs = pstmt.executeQuery()) {
@@ -91,12 +92,12 @@ public class DatabaseHelper {
 		}
 	}
 	
-	// Checks if a user already exists in the database based on their email.
-	public boolean doesUserExist(String email) {
-	    String query = "SELECT COUNT(*) FROM cse360users WHERE email = ?";
+	// Checks if a user already exists in the database based on their userName.
+	public boolean doesUserExist(String userName) {
+	    String query = "SELECT COUNT(*) FROM cse360users WHERE userName = ?";
 	    try (PreparedStatement pstmt = connection.prepareStatement(query)) {
 	        
-	        pstmt.setString(1, email);
+	        pstmt.setString(1, userName);
 	        ResultSet rs = pstmt.executeQuery();
 	        
 	        if (rs.next()) {
@@ -109,11 +110,11 @@ public class DatabaseHelper {
 	    return false; // If an error occurs, assume user doesn't exist
 	}
 	
-	// Retrieves the role of a user from the database using their email.
-	public String getUserRole(String email) {
-	    String query = "SELECT role FROM cse360users WHERE email = ?";
+	// Retrieves the role of a user from the database using their UserName.
+	public String getUserRole(String userName) {
+	    String query = "SELECT role FROM cse360users WHERE userName = ?";
 	    try (PreparedStatement pstmt = connection.prepareStatement(query)) {
-	        pstmt.setString(1, email);
+	        pstmt.setString(1, userName);
 	        ResultSet rs = pstmt.executeQuery();
 	        
 	        if (rs.next()) {
